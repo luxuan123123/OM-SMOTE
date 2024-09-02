@@ -2,9 +2,7 @@
 
 import numpy as np
 import copy
-# import matplotlib.pyplot as plt
-#
-# from mpl_toolkits.mplot3d import Axes3D
+
 import torch
 from imblearn.metrics import geometric_mean_score
 from imblearn.under_sampling import EditedNearestNeighbours, RepeatedEditedNearestNeighbours, AllKNN,NeighbourhoodCleaningRule,CondensedNearestNeighbour
@@ -253,11 +251,6 @@ def om-smote(name,algorithm,mul,a,normalize = True):
                                 np.zeros([majority.shape[0], 1])), axis=0)
 
 
-        # plt.scatter(majority[:, 0], majority[:, 1])
-        # plt.scatter(new_minority[:, 0], new_minority[:, 1])
-        # plt.show()
-
-
 
         if algorithm == 'bayes':
             clf1 = GaussianNB()
@@ -285,8 +278,6 @@ def om-smote(name,algorithm,mul,a,normalize = True):
             clf1 = GradientBoostingClassifier()
 
 
-        # new_X = np.around(new_X,2)
-        # mo-smote
         clf1.fit(new_X, new_y.ravel())
         test_predict1 = clf1.predict(X_test)
         accuracy1.append(accuracy_score(y_test.astype('int'), test_predict1))
@@ -328,9 +319,7 @@ if __name__ == '__main__':
             'yeast-1-2-8-9_vs_7', 'yeast-1_vs_7', 'yeast-2_vs_8', 'glass0', 'glass2', 'glass4', 'glass6',
             'glass-0-1-6_vs_2', 'glass-0-1-6_vs_5', 'vowel0', 'new-thyroid1', 'shuttle-C0_vs_C4', 'segment0',
             'vehicle0', 'page-blocks0', 'page-blocks-1-3_vs_4', 'abalone9_18', 'abalone19', 'wisconsin', 'haberman', 'pima']
-    # dataSet = ['ecoli1', 'ecoli2', 'ecoli3', 'ecoli4']
-    dataSet = ['yeast1', 'yeast3', 'yeast5', 'yeast-0-5-6-7-9_vs_4', 'yeast-1-2-8-9_vs_7', 'yeast-1_vs_7', 'yeast-2_vs_8']
-    # dataSet = ['vowel0', 'new-thyroid1', 'shuttle-C0_vs_C4', 'segment0', 'vehicle0', 'page-blocks0', 'page-blocks-1-3_vs_4', 'abalone9_18', 'abalone19', 'wisconsin', 'haberman', 'pima']
+  
 
 for name in dataSet:
     for mul in range(2,9):
